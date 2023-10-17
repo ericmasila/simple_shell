@@ -1,4 +1,5 @@
 #include "header.h"
+
 /**
  * path_cmd -  Search In $PATH for executable command
  * @cmd: Parsed input
@@ -8,9 +9,9 @@ int path_cmd(char **cmd)
 {
 	char *path, *value, *cmd_path;
 	struct stat buf;
+
 	path = _getenv("PATH");
 	value = _strtok(path, ":");
-        /* This calls a file  _strtok */
 	while (value != NULL)
 	{
 		cmd_path = build(*cmd, value);
@@ -28,6 +29,7 @@ int path_cmd(char **cmd)
 	free(value);
 	return (1);
 }
+
 /**
  * build - Build command
  * @token: Executable command
@@ -55,6 +57,7 @@ char *build(char *token, char *value)
 
 	return (cmd);
 }
+
 /**
  * _getenv - Gets the value of environment variable by name
  * @name: Environment variable name
@@ -92,3 +95,4 @@ char *_getenv(char *name)
 	}
 	return (NULL);
 }
+
